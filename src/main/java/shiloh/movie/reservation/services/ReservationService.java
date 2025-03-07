@@ -2,6 +2,7 @@ package shiloh.movie.reservation.services;
 
 import jakarta.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import shiloh.movie.reservation.model.Customer;
@@ -68,17 +69,19 @@ public class ReservationService {
 
     public List<Reservations> checkReservations(HttpServletRequest request) {
         String username = extractUsername(request);
-//        reservation = repo.findAllByUsername(username);
-//
-//        Reservation reservation = null;
-//        
-//        repo.findByUsername(username);
-//        String movie = reservation.getMovie().toString();
+        
         return repo.findAllByUsername(username); 
     }
 
-    public Reservations updateReservation(Reservations reservation, HttpServletRequest request) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Reservations updateReservation(Integer id, Reservations reservation, HttpServletRequest request) {
+    
+        return repo.save(reservation);
+    }
+
+    public String deleteReservation(Integer id) {
+    
+        repo.deleteById(id);
+        return "reservation for movie with id " + id + " successfully deleted.";
     }
 
 }

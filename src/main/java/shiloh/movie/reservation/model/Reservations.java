@@ -22,7 +22,7 @@ public class Reservations {
     private Customer customer;
     
     @ManyToOne
-    @JoinColumn(name = "movie_id", referencedColumnName = "movie_id")
+    @JoinColumn(name = "movieId", referencedColumnName = "movieId")
     private Movies movie;
 
     public int getReservation_id() {

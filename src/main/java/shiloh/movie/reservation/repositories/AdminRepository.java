@@ -1,14 +1,11 @@
-
 package shiloh.movie.reservation.repositories;
-
 
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import shiloh.movie.reservation.model.Customer;
+import shiloh.movie.reservation.model.Administrator;
 
 @Repository
-public interface CustomerRepository extends JpaRepository<Customer, Integer> {
-    
-    public Customer findByUsername(String username);
+public interface AdminRepository extends JpaRepository<Administrator, Integer>{
+    public Administrator findByUsername(String username);
 }

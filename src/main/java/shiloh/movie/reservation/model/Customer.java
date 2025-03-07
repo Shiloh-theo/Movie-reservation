@@ -31,8 +31,6 @@ public class Customer {
     public Customer(int Customer_id) {
         this.Customer_id = Customer_id;
     }
-    
-    
 
     public int getCustomer_id() {
         return Customer_id;

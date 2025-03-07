@@ -1,5 +1,7 @@
 package shiloh.movie.reservation.controllers;
 
+import java.sql.Time;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import shiloh.movie.reservation.model.Movies;
 import shiloh.movie.reservation.services.MovieService;
@@ -43,5 +46,29 @@ public class MoviesController {
     @PutMapping("updatemovie/{id}")
     public Movies updateMovie(@PathVariable Integer id, @RequestBody Movies movie){
      return service.updateMovie(movie); 
+    }
+    
+     @GetMapping("search")
+    public List<Movies> searchMovie(
+            @RequestParam(required = false) Integer movie_id,
+            @RequestParam(required = false) String title,
+            @RequestParam(required = false) String genre,
+            @RequestParam(required = false) String time,
+            @RequestParam(required = false) String date) {
+
+        // Check which parameter is provided and call the appropriate service method
+        if (movie_id != null) {
+            return service.searchById(movie_id);
+        } else if (title != null) {
+            return service.searchByTitle(title);
+        } else if (genre != null) {
+            return service.searchByGenre(genre);
+        } else if (time != null) {
+            return service.searchByTime(time);
+        } else if (date != null) {
+            return service.searchByDate(date);
+        } else {
+            return service.getMovies(); // Default case, return all movies
+        }
     }
 }

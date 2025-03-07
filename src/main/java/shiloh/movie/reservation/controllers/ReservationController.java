@@ -32,11 +32,11 @@ public class ReservationController {
     
     @PutMapping("updatereservation/{id}")
     public Reservations updateReservation(@PathVariable Integer id, @RequestBody Reservations reservation, HttpServletRequest request){
-       return service.updateReservation(reservation, request); 
+       return service.updateReservation(id, reservation, request); 
     }
     
     @DeleteMapping("deletereservation/{id}")
-    public String deleteReservation(){
-        return service.deleteReservation();
+    public String deleteReservation(@PathVariable Integer id){
+        return service.deleteReservation(id);
     }
 }

@@ -10,13 +10,13 @@ public class Administrator {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int admin_id;
+    int adminId;
     String username;
     String password;
     String email;
 
-    public Administrator(int admin_id, String username, String password, String email) {
-        this.admin_id = admin_id;
+    public Administrator(int adminId, String username, String password, String email) {
+        this.adminId = adminId;
         this.username = username;
         this.password = password;
         this.email = email;
@@ -26,11 +26,11 @@ public class Administrator {
     }
 
     public int getAdmin_id() {
-        return admin_id;
+        return adminId;
     }
 
-    public void setAdmin_id(int admin_id) {
-        this.admin_id = admin_id;
+    public void setAdmin_id(int adminId) {
+        this.adminId = adminId;
     }
 
     public String getUsername() {

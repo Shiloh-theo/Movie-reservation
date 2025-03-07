@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import shiloh.movie.reservation.model.Customer;
+import shiloh.movie.reservation.services.LoginRequest;
 import shiloh.movie.reservation.services.LoginService;
 
 
@@ -16,9 +16,12 @@ public class LoginController {
     @Autowired
     LoginService service;
     
+//    @Autowired
+//    Login
+    
     @PostMapping("login")
-    public String login(@RequestBody Customer customer){
-        return service.login(customer);
+    public String login(@RequestBody LoginRequest request){
+        return service.login(request.getUsername(), request.getPassword());
     }
     
     @GetMapping("home")
