@@ -4,8 +4,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import java.time.LocalDate;
-import java.time.LocalTime;
 
 @Entity
 public class Movies {
@@ -16,26 +14,24 @@ public class Movies {
     String title;
     String description;
     String genre;
-    LocalTime time;
-    LocalDate date;
+    int duration;
 
-    public Movies(int movieId, String title, String description, String genre, LocalTime time, LocalDate date) {
+    public Movies(int movieId, String title, String description, String genre, int duration) {
         this.movieId = movieId;
         this.title = title;
         this.description = description;
         this.genre = genre;
-        this.time = time;
-        this.date = date;
+        this.duration = duration;
     }
 
     public Movies() {
     }
 
-    public int getMovie_id() {
+    public int getMovieId() {
         return movieId;
     }
 
-    public void setMovie_id(int movieId) {
+    public void setMovieId(int movieId) {
         this.movieId = movieId;
     }
 
@@ -63,21 +59,12 @@ public class Movies {
         this.genre = genre;
     }
 
-    public LocalTime getLocalTime() {
-        return time;
+    public int getDuration() {
+        return duration;
     }
 
-    public void setLocalTime(LocalTime time) {
-        this.time = time;
+    public void setDuration(int duration) {
+        this.duration = duration;
     }
 
-    public LocalDate getLocalDate() {
-        return date;
-    }
-
-    public void setLocalDate(LocalDate date) {
-        this.date = date;
-    }
-    
-    
 }

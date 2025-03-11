@@ -9,9 +9,8 @@ import shiloh.movie.reservation.model.Movies;
 
 @Repository
 public interface MovieRepository extends JpaRepository<Movies, Integer> {
-    List<Movies> findByMovieId(Integer movieId);
+//    List<Movies> findByMovieId(Integer movieId);
     List<Movies> findByTitleContainingIgnoreCase(String title);
     List<Movies> findByGenreContainingIgnoreCase(String genre);
-    List<Movies> findByTime(LocalTime time);
-    List<Movies> findByDate(LocalDate date);
+    
 }

@@ -1,10 +1,9 @@
 package shiloh.movie.reservation.controllers;
 
-import java.sql.Time;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,7 +21,7 @@ public class MoviesController {
     @Autowired
     MovieService service;
     
-    
+    @PreAuthorize("hasAuthority('ADMIN')")  
     @PostMapping("addmovie")
     public Movies addMovie(@RequestBody Movies movie){
         return service.addMovie(movie);
@@ -33,6 +32,7 @@ public class MoviesController {
         return service.getMovies();
     }
     
+    @PreAuthorize("hasAuthority('ADMIN')") 
     @DeleteMapping("deletemovie/{id}")
     public String deleteMovie(@PathVariable Integer id){
         return service.deleteMovie(id);
@@ -43,6 +43,7 @@ public class MoviesController {
         return service.findMovie(id);
     }
     
+     @PreAuthorize("hasAuthority('ADMIN')") 
     @PutMapping("updatemovie/{id}")
     public Movies updateMovie(@PathVariable Integer id, @RequestBody Movies movie){
      return service.updateMovie(movie); 
@@ -58,7 +59,7 @@ public class MoviesController {
 
         // Check which parameter is provided and call the appropriate service method
         if (movie_id != null) {
-            return service.searchById(movie_id);
+//            return service.searchById(movie_id);
         } else if (title != null) {
             return service.searchByTitle(title);
         } else if (genre != null) {
@@ -70,5 +71,6 @@ public class MoviesController {
         } else {
             return service.getMovies(); // Default case, return all movies
         }
+        return null;
     }
 }

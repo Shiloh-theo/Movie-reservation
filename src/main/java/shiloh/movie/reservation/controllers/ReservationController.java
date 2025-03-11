@@ -36,7 +36,7 @@ public class ReservationController {
     }
     
     @DeleteMapping("deletereservation/{id}")
-    public String deleteReservation(@PathVariable Integer id){
-        return service.deleteReservation(id);
+    public String deleteReservation(@PathVariable Integer id, HttpServletRequest request){
+        return service.deleteReservation(id, request);
     }
 }
