@@ -27,9 +27,9 @@ public class ShowtimesController {
     }
     
     @PreAuthorize("hasAuthority('ADMIN')") 
-    @PutMapping("editShowtime/{id}")
-    public String editShowtime(@RequestBody Showtimes showtime, @PathVariable Integer id){
-        return service.editShowtime(showtime, id);
+    @PutMapping("editShowtime")
+    public Showtimes editShowtime(@RequestBody Showtimes showtime){
+        return service.editShowtime(showtime);
     }
     
     @PreAuthorize("hasAuthority('ADMIN')") 

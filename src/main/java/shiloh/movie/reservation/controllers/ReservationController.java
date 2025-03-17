@@ -15,28 +15,36 @@ import shiloh.movie.reservation.services.ReservationService;
 
 @RestController
 public class ReservationController {
-    
+
     @Autowired
     ReservationService service;
-    
+
     @PostMapping("reservemovie")
-    public Reservations reserveMovie(@RequestBody Reservations reservation, HttpServletRequest request){
-        
+    public Reservations reserveMovie(@RequestBody Reservations reservation, HttpServletRequest request) {
+
         return service.reserveMovie(reservation, request);
     }
-    
+
     @GetMapping("checkreservations")
-    public List<Reservations> checkReservations( HttpServletRequest request){
+    public List<Reservations> checkReservations(HttpServletRequest request) {
+
         return service.checkReservations(request);
     }
-    
+
     @PutMapping("updatereservation/{id}")
-    public Reservations updateReservation(@PathVariable Integer id, @RequestBody Reservations reservation, HttpServletRequest request){
-       return service.updateReservation(id, reservation, request); 
+    public Reservations updateReservation(@PathVariable Integer id, @RequestBody Reservations reservation, HttpServletRequest request) {
+
+        return service.updateReservation(id, reservation, request);
     }
-    
+
     @DeleteMapping("deletereservation/{id}")
-    public String deleteReservation(@PathVariable Integer id, HttpServletRequest request){
+    public String deleteReservation(@PathVariable Integer id, HttpServletRequest request) {
+
         return service.deleteReservation(id, request);
+    }
+
+    @GetMapping("/seatstaken/{showtimeId}")
+    public List<Integer> getTakenSeats(@PathVariable Integer showtimeId) {
+        return service.getTakenSeats(showtimeId);
     }
 }
